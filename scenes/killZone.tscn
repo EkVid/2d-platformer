@@ -2,13 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bbj3kit1jadrr" path="res://scripts/KillZone.cs" id="1_yx6fi"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xb10t"]
-
 [node name="killZone" type="Area2D" unique_id=736701766]
 script = ExtResource("1_yx6fi")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=542990703]
-shape = SubResource("WorldBoundaryShape2D_xb10t")
 
 [node name="Timer" type="Timer" parent="." unique_id=1261740110]
 
