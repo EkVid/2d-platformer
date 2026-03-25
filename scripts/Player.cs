@@ -6,6 +6,13 @@ public partial class Player : CharacterBody2D
 {
 	private const float Speed = 200.0f;
 	private const float JumpVelocity = -300.0f;
+	private AnimatedSprite2D character;
+
+	public override void _Ready()
+	{
+		base._Ready();	
+		character = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+	}
 
 	public override void _PhysicsProcess(double delta)
 	{
@@ -21,17 +28,22 @@ public partial class Player : CharacterBody2D
 			velocity.Y = JumpVelocity;
 		}
 
-		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-		if (direction != Vector2.Zero)
+		float direction = Input.GetAxis("move_left", "move_right");
+		if (direction != 0)
 		{
-			velocity.X = direction.X * Speed;
+			character.Play("walk");
+			velocity.X = direction * Speed;
+			character.FlipH = direction < 0;
 		}
 		else
 		{
+			character.Play("idle");
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 		}
+		
 
 		Velocity = velocity;
 		MoveAndSlide();
 	}
+	
 }

@@ -3,7 +3,7 @@ using System;
 
 public partial class Slime : CharacterBody2D
 {
-	private const float Speed = 80.0f;       
+	private const float Speed = 60.0f;       
 	private int Direction = 1;
 	private RayCast2D groundRayLeft;
 	private RayCast2D groundRayRight;
