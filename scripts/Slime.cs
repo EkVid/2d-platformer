@@ -5,7 +5,8 @@ public partial class Slime : CharacterBody2D
 {
 	private const float Speed = 80.0f;       
 	private int Direction = 1;
-	private RayCast2D groundRay;
+	private RayCast2D groundRayLeft;
+	private RayCast2D groundRayRight;
 	private RayCast2D topRay;
 	private AnimatedSprite2D sprite;
 
@@ -13,7 +14,9 @@ public partial class Slime : CharacterBody2D
 	public override void _Ready()
 	{
 		base._Ready();
-		groundRay = GetNode<RayCast2D>("RayCastDown");
+		groundRayLeft = GetNode<RayCast2D>("RayCastDownLeft");
+		groundRayRight = GetNode<RayCast2D>("RayCastDownRight");
+
 		topRay = GetNode<RayCast2D>("RayCastUp");
 		sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 	}
@@ -23,7 +26,7 @@ public partial class Slime : CharacterBody2D
 		
 		Vector2 velocity = Velocity;
 		
-		if (IsOnWall() || !groundRay.IsColliding())
+		if (IsOnWall() || !groundRayLeft.IsColliding() || !groundRayRight.IsColliding())
 		{
 			sprite.FlipH = Direction < 0;
 			Direction *= -1;

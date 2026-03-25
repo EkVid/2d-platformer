@@ -52,7 +52,7 @@ script = ExtResource("1_n6pvg")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=224133422]
 sprite_frames = SubResource("SpriteFrames_md484")
 autoplay = "default"
-frame_progress = 0.2601999
+frame_progress = 0.95841414
 
 [node name="killZone" parent="." unique_id=736701766 instance=ExtResource("2_n6pvg")]
 
@@ -60,7 +60,7 @@ frame_progress = 0.2601999
 position = Vector2(0, 5.5)
 shape = SubResource("RectangleShape2D_pjw23")
 
-[node name="RayCastDown" type="RayCast2D" parent="." unique_id=801527126]
+[node name="RayCastDownLeft" type="RayCast2D" parent="." unique_id=801527126]
 position = Vector2(0, 6)
 target_position = Vector2(-12, 16)
 
@@ -70,4 +70,8 @@ shape = SubResource("RectangleShape2D_n6pvg")
 
 [node name="RayCastUp" type="RayCast2D" parent="." unique_id=176723031]
 scale = Vector2(4.9999967, 1)
-target_position = Vector2(0, -7)
+target_position = Vector2(0, -11)
+
+[node name="RayCastDownRight" type="RayCast2D" parent="." unique_id=293981037]
+position = Vector2(0, 6)
+target_position = Vector2(14, 16)
