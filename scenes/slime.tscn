@@ -40,11 +40,11 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_md0e3"]
-size = Vector2(10, 11)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pjw23"]
+size = Vector2(16, 13)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n6pvg"]
-size = Vector2(8.5, 9.5)
+size = Vector2(9.625, 12.6875)
 
 [node name="slime" type="CharacterBody2D" unique_id=912354900]
 script = ExtResource("1_n6pvg")
@@ -52,18 +52,22 @@ script = ExtResource("1_n6pvg")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=224133422]
 sprite_frames = SubResource("SpriteFrames_md484")
 autoplay = "default"
-frame_progress = 0.8562895
+frame_progress = 0.2601999
 
 [node name="killZone" parent="." unique_id=736701766 instance=ExtResource("2_n6pvg")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="killZone" unique_id=251937762]
-position = Vector2(0, 6)
-shape = SubResource("RectangleShape2D_md0e3")
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_pjw23")
 
 [node name="RayCastDown" type="RayCast2D" parent="." unique_id=801527126]
 position = Vector2(0, 6)
 target_position = Vector2(-12, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1641269530]
-position = Vector2(0, 6)
+position = Vector2(0.1875, 4.34375)
 shape = SubResource("RectangleShape2D_n6pvg")
+
+[node name="RayCastUp" type="RayCast2D" parent="." unique_id=176723031]
+scale = Vector2(4.9999967, 1)
+target_position = Vector2(0, -7)

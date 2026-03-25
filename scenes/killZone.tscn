@@ -6,6 +6,3 @@
 script = ExtResource("1_yx6fi")
 
 [node name="Timer" type="Timer" parent="." unique_id=1261740110]
-
-[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
-[connection signal="timeout" from="Timer" to="." method="OnTimerTimeOut"]
