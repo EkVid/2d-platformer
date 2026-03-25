@@ -8,9 +8,7 @@ public partial class Coin : Area2D
 		BodyEntered += (Node2D body) =>
 		{
 			if (body.Name == "player")
-			{
 				QueueFree();
-			}
 		};
 	}
 }
