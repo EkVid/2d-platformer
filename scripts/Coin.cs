@@ -2,12 +2,15 @@ using Godot;
 	
 public partial class Coin : Area2D
 {
-	public void OnBodyEntered(Node2D body)
+	public override void _Ready()
 	{
-		if (body.Name == "player")
+		base._Ready();
+		BodyEntered += (Node2D body) =>
 		{
-		   QueueFree();
-		}
+			if (body.Name == "player")
+			{
+				QueueFree();
+			}
+		};
 	}
-	
 }
