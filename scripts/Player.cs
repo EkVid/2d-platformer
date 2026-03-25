@@ -7,6 +7,9 @@ public partial class Player : CharacterBody2D
 	private const float Speed = 200.0f;
 	private const float JumpVelocity = -300.0f;
 	private AnimatedSprite2D character;
+	private float direction;
+	Vector2 velocity;
+
 
 	public override void _Ready()
 	{
@@ -16,34 +19,56 @@ public partial class Player : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
-		Vector2 velocity = Velocity;
+		velocity = Velocity;
+		
+		ApplyGravity(delta);
+		HandleJump();
+		HandleHorizontalMovement();
+		UpdateAnimation();
+		
+		Velocity = velocity;
+		MoveAndSlide();
+	}
 
+	private void ApplyGravity(double delta)
+	{
 		if (!IsOnFloor())
 		{
 			velocity += GetGravity() * (float)delta;
 		}
+	}
 
+	private void HandleJump()
+	{
 		if (Input.IsActionJustPressed("jump") && IsOnFloor())
 		{
 			velocity.Y = JumpVelocity;
 		}
+	}
 
-		float direction = Input.GetAxis("move_left", "move_right");
+	private void HandleHorizontalMovement()
+	{
+		direction = Input.GetAxis("move_left", "move_right");
 		if (direction != 0)
 		{
-			character.Play("walk");
 			velocity.X = direction * Speed;
 			character.FlipH = direction < 0;
 		}
 		else
 		{
-			character.Play("idle");
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 		}
-		
-
-		Velocity = velocity;
-		MoveAndSlide();
 	}
 	
+	private void UpdateAnimation()
+	{
+		string anim = direction != 0 ? "walk" : "idle";
+		PlayAnimation(anim);
+	}
+
+	private void PlayAnimation(string animation)
+	{
+		if (character.Animation != animation)
+			character.Play(animation);
+	}
 }

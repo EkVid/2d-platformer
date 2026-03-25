@@ -13,7 +13,6 @@ public partial class KillZone : Area2D
 
         BodyEntered += (Node2D body) =>
         {
-            GD.Print("poo");
             if (body.Name == "player")
             {
                 _timer.WaitTime = 2f;
